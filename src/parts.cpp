@@ -6,13 +6,15 @@ void Part::describe()
     cout<<"Part "<<this->name<<" subparts are:"<<"\n";
     if (subparts.size() == 0)
     {
-        cout<<"It has no subparts.\n\n";
+        cout<<"It has no subparts.\n";
     } else
         for(auto subpart = subparts.begin();subpart!=subparts.end();subpart++)
         {
-            cout<<subparts[subpart->first]<<" "<<subpart->first->name;
+            cout<<subparts[subpart->first]<<" "<<subpart->first->name<<"\n";
         }
+        cout<<"\n";
 }
+
 int Part::count_howmany(Part const *p)
 {
     int answ = 0;
@@ -28,6 +30,10 @@ int Part::count_howmany(Part const *p)
     }
     return answ;
 }
+NameContainer::~NameContainer()
+{
+    this->name_map.clear();
+}
 Part* NameContainer::lookup(string const &name)
 {
     if (name_map.find(name) == name_map.end())
@@ -36,7 +42,8 @@ Part* NameContainer::lookup(string const &name)
     }
     return name_map[name];
 }
-void add_part(string const &x, int q, string const &y){
+void add_part(string const &x, int q, string const &y)
+{
     Part* px = partContainer.lookup(x);
     Part* py = partContainer.lookup(y);
     px->subparts[py] = q;
