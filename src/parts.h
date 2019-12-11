@@ -17,6 +17,7 @@ public:
     Part(string const &n) : name(n) {};
     void describe(void);
     int count_howmany(Part const *p);
+    map<Part*,int> subparts;
 };
 
 //**************** NameContainer ****************
